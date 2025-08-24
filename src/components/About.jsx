@@ -23,14 +23,19 @@ const About = () => {
           viewport={{ once: true }}
           className="flex justify-center lg:justify-end w-full lg:w-1/2"
         >
-          <div className="relative w-[250px] sm:w-[300px] md:w-[350px] h-[250px] sm:h-[300px] md:h-[350px] rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
-            <img
-              src={aboutImg}
-              alt="About Andrei Opulencia"
-              aria-label="Profile image of Andrei Opulencia"
-              className="w-full h-full object-cover brightness-75"
-            />
-            <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/70 to-transparent" />
+          <div className="flex flex-col items-center">
+            <div className="relative w-[250px] sm:w-[300px] md:w-[350px] h-[250px] sm:h-[300px] md:h-[350px] rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+              <img
+                src={aboutImg}
+                alt="About Andrei Opulencia at Colegio de San Juan de Letran"
+                aria-label="Profile image of Andrei Opulencia at Colegio de San Juan de Letran"
+                className="w-full h-full object-cover brightness-75"
+              />
+              <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/70 to-transparent" />
+            </div>
+            <div className="mt-2 text-neutral-200 text-[10px] sm:text-xs md:text-sm font-normal text-center">
+              Colegio de San Juan de Letran | FMGSD
+            </div>
           </div>
         </motion.div>
 
