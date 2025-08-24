@@ -34,7 +34,7 @@ const About = () => {
               <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/70 to-transparent" />
             </div>
             <div className="mt-2 text-neutral-200 text-[10px] sm:text-xs md:text-sm font-normal text-center">
-              Colegio de San Juan de Letran | FMGSD
+              Colegio de San Juan de Letran Calamba | FMGSD
             </div>
           </div>
         </motion.div>

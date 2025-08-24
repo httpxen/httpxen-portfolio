@@ -11,7 +11,7 @@ export const EXPERIENCES = [
   {
     year: "2025",
     role: "Full Stack Developer",
-    company: "Colegio de San Juan de Letran | Facilities Management and General Services Division",
+    company: "Colegio de San Juan de Letran Calamba | Facilities Management and General Services Division",
     description: `As part of my on-the-job training, I contributed to the development of the EHS Self-Paced Learning System, an internal platform designed to support environmental health and safety education. My role involved assisting with system interface design, organizing digital content, and collaborating with the team to improve user experience for both administrators and clients.`,
     technologies: ["HTML", "PHP", "Tailwindcss", "MySQL","JavaScript"],
   },
@@ -26,18 +26,18 @@ export const EXPERIENCES = [
 
 export const PROJECTS = [
   {
-    title: "りんな API PROJECT 2.0",
-    image: project1,
-    description:
-      "This project utilizes an internal Rinna API provided by our school, designed to offer AI-powered text processing capabilities such as automatic tagging, summarization, and contextual analysis. Our goal was to create a simple and functional web-based tool that allows users to input raw text and receive intelligent feedback using the API.",
-    technologies: ["HTML", "CSS", "Python", "Rinna API",],
-  },
-  {
     title: "EHS Self-Paced Learning System",
-    image: project2,
+    image: project1,
     description:
       "The EHS Self-Paced Learning System is a desktop-based application designed to support the Environmental Health and Safety (EHS) program by providing a structured platform for client training and assessment. The system allows administrators to create and manage learning materials, monitor participant progress, and gather feedback through interactive surveys.",
     technologies: ["HTML", "MySQL","PHP", "Tailwindcss", "JavaScript"],
+  },
+  {
+    title: "りんな API PROJECT 2.0",
+    image: project2,
+    description:
+      "This project utilizes an internal Rinna API provided by our school, designed to offer AI-powered text processing capabilities such as automatic tagging, summarization, and contextual analysis. Our goal was to create a simple and functional web-based tool that allows users to input raw text and receive intelligent feedback using the API.",
+    technologies: ["HTML", "CSS", "Python", "Rinna API",],
   },
   {
   title: "Protocol Omega Discord Bot",

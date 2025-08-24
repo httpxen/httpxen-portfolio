@@ -107,7 +107,7 @@ const Experience = () => {
                   );
                 })}
               </div>
-              {experience.company === "Colegio de San Juan de Letran | Facilities Management and General Services Division" && (
+              {experience.company === "Colegio de San Juan de Letran Calamba | Facilities Management and General Services Division" && (
                 <div className="mt-4">
                   <p className="text-sm text-neutral-400 mb-2">Location: Colegio de San Juan de Letran Calamba</p>
                   <iframe
