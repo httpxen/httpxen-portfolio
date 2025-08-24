@@ -13,7 +13,6 @@ const Technologies = () => {
   const controls = useAnimation();
   const [containerWidth, setContainerWidth] = useState(0);
   const shouldReduceMotion = useReducedMotion();
-  const animationProgress = useRef(0); // Track animation progress
 
   const techItems = [
     { Icon: FaHtml5, name: "HTML5", color: "text-orange-600", duration: 2 },
@@ -32,11 +31,11 @@ const Technologies = () => {
     { Icon: SiVite, name: "Vite", color: "text-purple-400", duration: 2.6 },
     { Icon: SiMongodb, name: "MongoDB", color: "text-green-500", duration: 2.5 },
     { Icon: BiLogoPostgresql, name: "PostgreSQL", color: "text-sky-700", duration: 2.2 },
-    { Icon: SiApache, name: "XAMPP", color: "text-orange-500", duration: 2.4 }, 
-    { Icon: SiMysql, name: "MySQL", color: "text-blue-600", duration: 2.3 }, 
+    { Icon: SiApache, name: "XAMPP", color: "text-orange-500", duration: 2.4 },
+    { Icon: SiMysql, name: "MySQL", color: "text-blue-600", duration: 2.3 },
   ];
 
-  // Calculate container width for smooth looping
+  // Calculate container width
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
@@ -56,63 +55,26 @@ const Technologies = () => {
       return;
     }
 
-    const startAnimation = () => {
-      controls.start({
-        x: [animationProgress.current * -containerWidth, -containerWidth],
-        transition: {
-          x: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 20 * (1 - animationProgress.current), // Adjust duration based on progress
-            ease: "linear",
-          },
+    controls.start({
+      x: [-containerWidth, 0],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: containerWidth / 100,
+          ease: "linear",
         },
-      });
-    };
-
-    startAnimation();
+      },
+    });
   }, [controls, shouldReduceMotion, containerWidth]);
-
-  // Update progress on animation frame
-  useEffect(() => {
-    let lastTime = 0;
-    const updateProgress = (time) => {
-      if (!shouldReduceMotion && containerWidth > 0) {
-        const delta = time - lastTime;
-        const progressPerMs = 1 / (20 * 1000); // Progress per millisecond for 20s duration
-        animationProgress.current = (animationProgress.current + delta * progressPerMs) % 1;
-        lastTime = time;
-      }
-      requestAnimationFrame(updateProgress);
-    };
-
-    const animationFrame = requestAnimationFrame(updateProgress);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [shouldReduceMotion, containerWidth]);
 
   // Hover and tap handlers
   const handleInteractionStart = (name) => {
     setHoveredTech(name);
-    if (!shouldReduceMotion) {
-      controls.stop();
-    }
   };
 
   const handleInteractionEnd = () => {
     setHoveredTech("");
-    if (!shouldReduceMotion) {
-      controls.start({
-        x: [animationProgress.current * -containerWidth, -containerWidth],
-        transition: {
-          x: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 20 * (1 - animationProgress.current), // Resume with remaining time
-            ease: "linear",
-          },
-        },
-      });
-    }
   };
 
   return (
@@ -133,9 +95,9 @@ const Technologies = () => {
       <div className="relative overflow-hidden px-4">
         <motion.div
           ref={containerRef}
-          className="flex gap-4"
+          className={`flex gap-4 ${shouldReduceMotion ? "flex-wrap justify-center" : ""}`}
           animate={controls}
-          style={{ width: `${containerWidth * 2}px` }}
+          style={{ willChange: "transform", width: shouldReduceMotion ? "auto" : `${containerWidth * 2}px` }}
         >
           {[...techItems, ...techItems].map(({ Icon, name, color, duration }, index) => (
             <motion.div
@@ -143,17 +105,20 @@ const Technologies = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              whileHover={!shouldReduceMotion && {
-                scale: 1.1,
-                transition: { type: "spring", stiffness: 300 },
-              }}
+              whileHover={
+                !shouldReduceMotion && {
+                  scale: 1.15,
+                  transition: { type: "spring", stiffness: 300 },
+                }
+              }
               className="flex flex-shrink-0 items-center justify-center w-20 h-20"
               onHoverStart={() => handleInteractionStart(name)}
               onHoverEnd={handleInteractionEnd}
               onTap={() => handleInteractionStart(name)}
+              onTapCancel={handleInteractionEnd}
             >
               <motion.div
-                animate={shouldReduceMotion ? {} : { y: [0, -8] }}
+                animate={shouldReduceMotion ? {} : { y: [0, -10] }}
                 transition={
                   shouldReduceMotion
                     ? {}
@@ -164,7 +129,7 @@ const Technologies = () => {
                         repeatType: "reverse",
                       }
                 }
-                className="rounded-xl border-2 border-neutral-800 p-3 bg-neutral-900/90 shadow-lg"
+                className={`rounded-xl border-[2.5px] border-neutral-600 p-3 bg-neutral-900/90 shadow-lg hover:shadow-xl hover:bg-neutral-800/90 hover:border-neutral-400 transition-all`}
                 aria-label={`Technology: ${name}`}
               >
                 <Icon className={`text-4xl ${color}`} />
@@ -183,8 +148,8 @@ const Technologies = () => {
           transition={{ duration: 0.2 }}
           className="text-neutral-300"
         >
+          {hoveredTech || "Hover or tap a technology"}
         </motion.span>
-               {hoveredTech || "Hover or tap a technology"}
       </div>
     </section>
   );

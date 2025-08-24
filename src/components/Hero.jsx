@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { HERO_CONTENT } from "../constants";
 import profilePic from "../assets/Drei.jpg";
 import { motion, useInView } from "framer-motion";
@@ -19,6 +19,32 @@ const container = (direction = "top", delay = 0) => ({
   },
 });
 
+// Animation for the gradient ring
+const ringVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeInOut",
+      repeat: Infinity,
+      repeatType: "reverse",
+    },
+  },
+};
+
+// Modal animation variants
+const modalVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.3, ease: "easeInOut" },
+  },
+  exit: { opacity: 0, scale: 0.8, transition: { duration: 0.2 } },
+};
+
 const Hero = () => {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
@@ -33,6 +59,19 @@ const Hero = () => {
   const buttonInView = useInView(buttonRef, { threshold: 0.5, once: true });
   const imageInView = useInView(imageRef, { threshold: 0.5, once: true });
   const mobileButtonInView = useInView(mobileButtonRef, { threshold: 0.5, once: true });
+
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Simulate active status
+  const isActive = true;
+
+  // Contact information
+  const contactInfo = [
+    { platform: "Email", value: "opulenciaandrei23@gmail.com"},
+    { platform: "LinkedIn", value: "Tom Andrei Opulencia"},
+    { platform: "GitHub", value: "httpxen"},
+  ];
 
   return (
     <div className="pb-24 lg:pb-20 lg:mb-35 px-4 sm:px-6 lg:px-16">
@@ -86,15 +125,13 @@ const Hero = () => {
               >
                 Download CV
               </a>
-              <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=opulenciaandrei23@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Contact Andrei Opulencia via email"
+              <button
+                onClick={() => setIsModalOpen(true)}
+                aria-label="Open contact information modal"
                 className="border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-cyan-500 hover:text-gray-900 hover:-rotate-2 transition-all duration-300"
               >
                 Let's Connect
-              </a>
+              </button>
             </motion.div>
           </div>
         </div>
@@ -102,15 +139,38 @@ const Hero = () => {
         {/* RIGHT SIDE */}
         <div className="w-full lg:w-1/2 lg:p-8 mt-8 lg:mt-0">
           <div className="flex flex-col items-center">
-            <motion.img
-              ref={imageRef}
-              initial={{ y: 100, opacity: 0 }}
-              animate={imageInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              src={profilePic}
-              alt="Andrei Opulencia profile picture"
-              className="w-[200px] sm:w-[300px] lg:w-[400px] h-auto rounded-full object-cover filter brightness-75 shadow-md"
-            />
+            <div className="relative w-[200px] sm:w-[300px] lg:w-[400px]">
+              {isActive && (
+                <motion.div
+                  variants={ringVariants}
+                  initial="hidden"
+                  animate={imageInView ? "visible" : "hidden"}
+                  className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 p-1"
+                  style={{ filter: "blur(8px)" }}
+                >
+                  <div className="w-full h-full rounded-full bg-gray-900" />
+                </motion.div>
+              )}
+              <motion.img
+                ref={imageRef}
+                initial={{ y: 100, opacity: 0 }}
+                animate={imageInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                src={profilePic}
+                alt="Andrei Opulencia profile picture"
+                className="relative w-full h-auto rounded-full object-cover filter brightness-75 shadow-md"
+              />
+              {isActive && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="absolute bottom-2 right-2 bg-gradient-to-r from-pink-500 to-cyan-400 text-white text-xs font-medium px-2 py-1 rounded-full"
+                >
+                  Active
+                </motion.div>
+              )}
+            </div>
 
             {/* MOBILE BUTTONS */}
             <motion.div
@@ -128,19 +188,60 @@ const Hero = () => {
               >
                 Download CV
               </a>
-              <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=opulenciaandrei23@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Contact Andrei Opulencia via email"
+              <button
+                onClick={() => setIsModalOpen(true)}
+                aria-label="Open contact information modal"
                 className="border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-cyan-500 hover:text-gray-900 hover:-rotate-2 transition-all duration-300 text-center"
               >
                 Let's Connect
-              </a>
+              </button>
             </motion.div>
           </div>
         </div>
       </div>
+
+      {/* MODAL */}
+      {isModalOpen && (
+        <motion.div
+          className="fixed inset-0 flex items-center justify-center z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsModalOpen(false)}
+        >
+          <motion.div
+            variants={modalVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="relative bg-gray-900/30 backdrop-blur-lg rounded-xl p-8 w-full max-w-md mx-4 border border-gray-700/50 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-3xl font-semibold text-white mb-6 tracking-tight">Contact Me</h2>
+            <ul className="space-y-4">
+              {contactInfo.map((info, index) => (
+                <li key={index} className="flex items-center gap-3 text-gray-200">
+                  <span className="font-medium text-white">{info.platform}:</span>
+                  <a
+                    href={info.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
+                  >
+                    {info.value}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="mt-8 w-full bg-gradient-to-r from-pink-500 to-cyan-400 text-white px-6 py-3 rounded-lg font-medium hover:from-pink-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105"
+            >
+              Close
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   );
 };
