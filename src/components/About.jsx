@@ -5,6 +5,7 @@ import { ABOUT_TEXT } from "../constants";
 const About = () => {
   return (
     <div className="pb-16">
+      {/* Title */}
       <motion.h2
         initial={{ y: -40, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -16,6 +17,7 @@ const About = () => {
       </motion.h2>
 
       <div className="flex flex-col lg:flex-row items-center justify-between px-4 gap-8 lg:gap-16">
+        {/* Image Section */}
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -39,6 +41,23 @@ const About = () => {
           </div>
         </motion.div>
 
+        {/* Animated Separator Line */}
+        <motion.div
+          initial={{ scaleY: 0, opacity: 0 }}
+          whileInView={{ scaleY: 1, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="hidden lg:block w-[1px] h-80 bg-neutral-700 rounded-full"
+        />
+        <motion.div
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="block lg:hidden w-40 h-[1px] bg-neutral-700 rounded-full my-4"
+        />
+
+        {/* Text Section */}
         <motion.div
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}

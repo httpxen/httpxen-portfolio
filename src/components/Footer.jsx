@@ -3,86 +3,78 @@ import { FaLinkedin, FaGithub, FaInstagram, FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   const container = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeInOut" },
+      transition: { duration: 0.8, ease: "easeInOut" },
     },
   };
 
+  const socials = [
+    {
+      href: "https://www.linkedin.com/in/tom-andrei-opulencia-1b5b90314/",
+      label: "LinkedIn",
+      icon: <FaLinkedin />,
+      color: "text-[#0A66C2] hover:drop-shadow-[0_0_6px_#0A66C2]",
+    },
+    {
+      href: "https://github.com/httpxen",
+      label: "GitHub",
+      icon: <FaGithub />,
+      color: "text-white hover:drop-shadow-[0_0_6px_#ffffff]",
+    },
+    {
+      href: "https://www.tiktok.com/@drei_xen",
+      label: "TikTok",
+      icon: <FaTiktok />,
+      color: "text-white hover:drop-shadow-[0_0_6px_#ff0050]", // pink accent glow
+    },
+    {
+      href: "https://www.instagram.com/drei_xen/",
+      label: "Instagram",
+      icon: <FaInstagram />,
+      color: "text-[#E1306C] hover:drop-shadow-[0_0_6px_#E1306C]",
+    },
+  ];
+
   return (
-    <footer className="border-t border-neutral-800 py-8 px-4 sm:px-6 lg:px-16 text-center">
+    <footer className="relative py-10 px-6 sm:px-8 lg:px-16 text-center overflow-hidden">
+      {/* Gradient border top */}
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500" />
+
       <motion.div
         variants={container}
         initial="hidden"
         animate="visible"
-        className="flex flex-col items-center gap-4"
+        className="flex flex-col items-center gap-6"
       >
-        <div className="flex items-center justify-center gap-6 text-lg">
-          {/* LinkedIn */}
-          <div className="group relative flex flex-col items-center">
-            <a
-              href="https://www.linkedin.com/in/tom-andrei-opulencia-1b5b90314/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition duration-300 hover:scale-110 hover:opacity-60 text-[#0A66C2]"
+        {/* Social Icons */}
+        <div className="flex items-center justify-center gap-8 text-2xl">
+          {socials.map((s, i) => (
+            <div
+              key={i}
+              className="group relative flex flex-col items-center"
             >
-              <FaLinkedin />
-            </a>
-            <span className="absolute top-6 text-xs bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-200 pointer-events-none">
-              LinkedIn
-            </span>
-          </div>
-
-          {/* GitHub */}
-          <div className="group relative flex flex-col items-center">
-            <a
-              href="https://github.com/httpxen"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition duration-300 hover:scale-110 hover:opacity-60 text-white"
-            >
-              <FaGithub />
-            </a>
-            <span className="absolute top-6 text-xs bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-200 pointer-events-none">
-              GitHub
-            </span>
-          </div>
-
-          {/* TikTok */}
-          <div className="group relative flex flex-col items-center">
-            <a
-              href="https://www.tiktok.com/@drei_xen"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition duration-300 hover:scale-110 hover:opacity-60 text-white"
-            >
-              <FaTiktok />
-            </a>
-            <span className="absolute top-6 text-xs bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-200 pointer-events-none">
-              TikTok
-            </span>
-          </div>
-
-          {/* Instagram */}
-          <div className="group relative flex flex-col items-center">
-            <a
-              href="https://www.instagram.com/drei_xen/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition duration-300 hover:scale-110 hover:opacity-60 text-[#E1306C]"
-            >
-              <FaInstagram />
-            </a>
-            <span className="absolute top-6 text-xs bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-200 pointer-events-none">
-              Instagram
-            </span>
-          </div>
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`transition duration-300 hover:scale-125 ${s.color}`}
+              >
+                {s.icon}
+              </a>
+              <span className="absolute top-8 text-xs bg-black/80 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition duration-300 pointer-events-none">
+                {s.label}
+              </span>
+            </div>
+          ))}
         </div>
 
-        <p className="text-white text-xs sm:text-sm font-light">
-          © {new Date().getFullYear()} Andrei Opulencia. All rights reserved.
+        {/* Footer Text */}
+        <p className="text-neutral-400 text-xs sm:text-sm font-light tracking-wide">
+          © {new Date().getFullYear()}{" "}
+          <span className="text-white">Andrei Opulencia</span>. All rights reserved.
         </p>
       </motion.div>
     </footer>

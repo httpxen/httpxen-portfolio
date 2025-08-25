@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { RiReactjsLine } from "react-icons/ri";
 import { TbBrandNextjs } from "react-icons/tb";
+import { SiPython } from "react-icons/si";
 import { SiMongodb, SiTailwindcss, SiBootstrap, SiLaravel, SiNpm, SiJavascript, SiLua, SiVite, SiMysql, SiApache } from "react-icons/si";
 import { DiRedis } from "react-icons/di";
 import { FaNodeJs, FaHtml5, FaCss3Alt, FaPhp, FaJava } from "react-icons/fa";
@@ -25,6 +26,7 @@ const Technologies = () => {
     { Icon: FaJava, name: "Java", color: "text-red-600", duration: 3.2 },
     { Icon: SiLua, name: "Lua", color: "text-blue-700", duration: 2.8 },
     { Icon: FaPhp, name: "PHP", color: "text-indigo-600", duration: 3 },
+    { Icon: SiPython, name: "Python", color: "text-yellow-500", duration: 3 },
     { Icon: SiLaravel, name: "Laravel", color: "text-red-500", duration: 3.1 },
     { Icon: FaNodeJs, name: "Node.js", color: "text-green-500", duration: 3 },
     { Icon: SiNpm, name: "Npm", color: "text-red-600", duration: 2.4 },

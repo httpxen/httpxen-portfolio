@@ -3,10 +3,12 @@ import { FaLinkedin, FaGithub, FaInstagram, FaTiktok } from "react-icons/fa";
 const Navbar = () => {
   return (
     <nav className="mb-20 flex items-center justify-between py-6 px-6 lg:px-24">
+      {/* Logo */}
       <div className="text-xl lg:text-2xl font-bold text-white animate-pulse transition duration-300 hover:scale-110 hover:opacity-80 cursor-pointer">
-        <span className="typewriter-text">Xen</span>
+        Xen
       </div>
 
+      {/* Social Media Icons */}
       <div className="flex items-center justify-center gap-6 text-lg lg:text-xl">
         {/* LinkedIn */}
         <div className="group relative flex flex-col items-center">

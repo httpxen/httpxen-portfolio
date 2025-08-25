@@ -5,7 +5,7 @@ import project3 from "../assets/projects/project-3.png";
 export const HERO_CONTENT = `I am a passionate and motivated junior full stack developer and has solid foundation in both front-end and back-end technologies. I have experience building projects using HTML, PHP, Tailwind CSS, Bootstrap, Laravel, React, Next.js, Node.js, MySQL, Java, Javascript, Lua and I’m continuously expanding my knowledge to become a better developer. My goal is to contribute to real-world projects, collaborate with other developers, and create solutions that provide real value to users.`;
 
 
-export const ABOUT_TEXT = `I am a dedicated and curious junior full stack developer with a strong passion for building clean, user-friendly, and efficient web applications also game. I have experience working with HTML, PHP, Tailwind CSS, Bootstrap, Laravel, React, Next.js, Node.js, MySQL, MongoDB, Java, JavaScript, and Lua, and I am continuously expanding my knowledge to become a better developer. My goal is to contribute to real-world projects, collaborate with other developers, and create innovative solutions that deliver real value to users.`;
+export const ABOUT_TEXT = `I am a dedicated and curious junior full stack developer with a strong passion for building clean, user-friendly, and efficient web applications also game development. I have experience working with HTML, PHP, Tailwind CSS, Bootstrap, Laravel, React, Next.js, Node.js, MySQL, MongoDB, Java, JavaScript, and Lua, and I am continuously expanding my knowledge to become a better developer. My goal is to contribute to real-world projects, collaborate with other developers, and create innovative solutions that deliver real value to users.`;
 
 export const EXPERIENCES = [
   {

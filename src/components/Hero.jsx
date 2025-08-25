@@ -19,21 +19,6 @@ const container = (direction = "top", delay = 0) => ({
   },
 });
 
-// Animation for the gradient ring
-const ringVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeInOut",
-      repeat: Infinity,
-      repeatType: "reverse",
-    },
-  },
-};
-
 // Modal animation variants
 const modalVariants = {
   hidden: { opacity: 0, scale: 0.8 },
@@ -62,9 +47,6 @@ const Hero = () => {
 
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Simulate active status
-  const isActive = true;
 
   // Contact information
   const contactInfo = [
@@ -140,17 +122,6 @@ const Hero = () => {
         <div className="w-full lg:w-1/2 lg:p-8 mt-8 lg:mt-0">
           <div className="flex flex-col items-center">
             <div className="relative w-[200px] sm:w-[300px] lg:w-[400px]">
-              {isActive && (
-                <motion.div
-                  variants={ringVariants}
-                  initial="hidden"
-                  animate={imageInView ? "visible" : "hidden"}
-                  className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 p-1"
-                  style={{ filter: "blur(8px)" }}
-                >
-                  <div className="w-full h-full rounded-full bg-gray-900" />
-                </motion.div>
-              )}
               <motion.img
                 ref={imageRef}
                 initial={{ y: 100, opacity: 0 }}
@@ -160,16 +131,6 @@ const Hero = () => {
                 alt="Andrei Opulencia profile picture"
                 className="relative w-full h-auto rounded-full object-cover filter brightness-75 shadow-md"
               />
-              {isActive && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="absolute bottom-2 right-2 bg-gradient-to-r from-pink-500 to-cyan-400 text-white text-xs font-medium px-2 py-1 rounded-full"
-                >
-                  Active
-                </motion.div>
-              )}
             </div>
 
             {/* MOBILE BUTTONS */}
