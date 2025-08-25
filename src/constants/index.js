@@ -20,7 +20,7 @@ export const EXPERIENCES = [
     role: "Full Stack Developer",
     company: "Colegio de San Juan de Letran Calamba | Calamba Water District",
     description: "Designed and developed CWD AquaSense, an AI chatbot-integrated complaint and feedback management system with data analytics and sentiment analysis. The system streamlines customer service processes by automating inquiry handling, improving response time, and providing actionable insights through data-driven reporting, enabling Calamba Water District to enhance efficiency and customer satisfaction.",
-    technologies: ["HTML", "PHP", "Bootstrap", "JavaScript"]
+    technologies: ["HTML", "PHP", "Bootstrap","Tailwindcss", "JavaScript"]
   },
 ];
 
