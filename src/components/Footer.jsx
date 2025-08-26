@@ -28,7 +28,7 @@ const Footer = () => {
       href: "https://www.tiktok.com/@drei_xen",
       label: "TikTok",
       icon: <FaTiktok />,
-      color: "text-white hover:drop-shadow-[0_0_6px_#ff0050]", // pink accent glow
+      color: "text-white hover:drop-shadow-[0_0_6px_#ff0050]",
     },
     {
       href: "https://www.instagram.com/drei_xen/",
@@ -52,10 +52,7 @@ const Footer = () => {
         {/* Social Icons */}
         <div className="flex items-center justify-center gap-8 text-2xl">
           {socials.map((s, i) => (
-            <div
-              key={i}
-              className="group relative flex flex-col items-center"
-            >
+            <div key={i} className="group relative flex flex-col items-center">
               <a
                 href={s.href}
                 target="_blank"
@@ -76,6 +73,22 @@ const Footer = () => {
           © {new Date().getFullYear()}{" "}
           <span className="text-white">Andrei Opulencia</span>. All rights reserved.
         </p>
+
+        {/* Updating Note - Improved Visibility */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.8, ease: "easeInOut" }}
+          className="flex items-center gap-2 text-sm sm:text-base font-medium mt-3"
+        >
+          {/* Gradient Spinner */}
+          <span className="w-4 h-4 border-2 border-pink-500 border-t-yellow-400 rounded-full animate-spin"></span>
+          
+          {/* Gradient Text with shadow */}
+          <span className="bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 bg-clip-text text-transparent animate-pulse drop-shadow-[0_0_4px_rgba(255,255,255,0.4)]">
+            Still updating — more features and changes coming soon.
+          </span>
+        </motion.p>
       </motion.div>
     </footer>
   );
