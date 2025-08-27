@@ -50,6 +50,6 @@ export const PROJECTS = [
 
 export const CONTACT = {
   address: "Calamba City, Laguna, PH 4027",
-  phoneNo: "+63 976 673 4675",
+  phoneNo: "+63 995 635 5795",
   email: "opulenciaandrei23@gmail.com",
 };
