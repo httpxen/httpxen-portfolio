@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { HERO_CONTENT } from "../constants";
-import profilePic from "../assets/Drei.jpg";
+import profilePic from "../assets/Drei.png";
 import { motion, useInView } from "framer-motion";
 
 const container = (direction = "top", delay = 0) => ({
@@ -129,7 +129,7 @@ const Hero = () => {
                 transition={{ duration: 0.6, ease: "easeInOut" }}
                 src={profilePic}
                 alt="Andrei Opulencia profile picture"
-                className="relative w-full h-auto rounded-full object-cover filter brightness-75 shadow-md"
+                className="relative w-full h-auto rounded-lg object-cover filter brightness-75 shadow-md" // Binago dito: rounded-full -> rounded-lg
               />
             </div>
 
