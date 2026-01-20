@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { HERO_CONTENT } from "../constants";
 import profilePic from "../assets/Drei.png";
 import { motion, useInView } from "framer-motion";
+import emailjs from '@emailjs/browser';
 
 const container = (direction = "top", delay = 0) => ({
   hidden: { 
@@ -19,15 +20,14 @@ const container = (direction = "top", delay = 0) => ({
   },
 });
 
-// Modal animation variants
 const modalVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
-    scale: 1,
-    transition: { duration: 0.3, ease: "easeInOut" },
+    y: 0,
+    transition: { duration: 0.3, ease: "easeOut" },
   },
-  exit: { opacity: 0, scale: 0.8, transition: { duration: 0.2 } },
+  exit: { opacity: 0, y: 50, transition: { duration: 0.2 } },
 };
 
 const Hero = () => {
@@ -37,6 +37,7 @@ const Hero = () => {
   const buttonRef = useRef(null);
   const imageRef = useRef(null);
   const mobileButtonRef = useRef(null);
+  const formRef = useRef();
 
   const titleInView = useInView(titleRef, { threshold: 0.5, once: true });
   const subtitleInView = useInView(subtitleRef, { threshold: 0.5, once: true });
@@ -45,15 +46,73 @@ const Hero = () => {
   const imageInView = useInView(imageRef, { threshold: 0.5, once: true });
   const mobileButtonInView = useInView(mobileButtonRef, { threshold: 0.5, once: true });
 
-  // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
 
-  // Contact information
-  const contactInfo = [
-    { platform: "Email", value: "opulenciaandrei23@gmail.com"},
-    { platform: "LinkedIn", value: "Tom Andrei Opulencia"},
-    { platform: "GitHub", value: "httpxen"},
-  ];
+  const SERVICE_ID = 'service_44ear1e';
+  const TEMPLATE_ID = 'template_7vncj2l';
+  const AUTO_REPLY_TEMPLATE_ID = 'template_fc2wfkk';
+  const PUBLIC_KEY = 'Kg_A5OPvzVw-ptIG2';
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('');
+
+    const userName = formRef.current.user_name.value;
+    const userEmail = formRef.current.user_email.value;
+    const userMessage = formRef.current.message.value;
+
+    console.log('Form values for auto-reply:', { 
+      to_email: userEmail, 
+      user_name: userName, 
+      message: userMessage 
+    });
+
+    try {
+      console.log('Sending contact email...');
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY);
+      console.log('Contact email sent successfully!');
+
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      console.log('Sending auto-reply...');
+      await emailjs.send(
+        SERVICE_ID,
+        AUTO_REPLY_TEMPLATE_ID,
+        {
+          to_email: userEmail,
+          user_name: userName,
+          message: userMessage
+        },
+        PUBLIC_KEY
+      );
+
+      console.log('Auto-reply sent successfully!');
+      setSubmitStatus('success');
+      formRef.current.reset();
+    } catch (error) {
+      console.error('Email send error details:', error);
+      let errorMsg = 'Something went wrong. Please try again.';
+      if (error.status === 400 || error.status === 422) {
+        errorMsg = 'Template setup issue (e.g., To Email field). Check EmailJS dashboard.';
+      } else if (error.status === 401) {
+        errorMsg = 'Invalid public key or auth issue.';
+      } else if (error.status === 429) {
+        errorMsg = 'Rate limit hit. Try again in a second.';
+      }
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSubmitStatus('');
+    setIsSubmitting(false);
+  };
 
   return (
     <div className="pb-24 lg:pb-20 lg:mb-35 px-4 sm:px-6 lg:px-16">
@@ -91,7 +150,6 @@ const Hero = () => {
               {HERO_CONTENT}
             </motion.p>
 
-            {/* DESKTOP BUTTONS */}
             <motion.div
               ref={buttonRef}
               variants={container("top", 0.6)}
@@ -100,19 +158,19 @@ const Hero = () => {
               className="mt-4 hidden lg:flex gap-4"
             >
               <a
-                href=""
-                download=""
+                href="Opulencia_CV.pdf"
+                download="Opulencia_CV.pdf"
                 aria-label="Download Andrei Opulencia's CV"
-                className="border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-cyan-500 hover:text-gray-900 hover:rotate-2 transition-all duration-300"
+                className="border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-gray-800 hover:border-gray-600 transition-all duration-300"
               >
                 Download CV
               </a>
               <button
                 onClick={() => setIsModalOpen(true)}
-                aria-label="Open contact information modal"
-                className="border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-cyan-500 hover:text-gray-900 hover:-rotate-2 transition-all duration-300"
+                aria-label="Open contact form"
+                className="border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-gray-800 hover:border-gray-600 transition-all duration-300"
               >
-                Let's Connect
+                Contact Me
               </button>
             </motion.div>
           </div>
@@ -129,11 +187,10 @@ const Hero = () => {
                 transition={{ duration: 0.6, ease: "easeInOut" }}
                 src={profilePic}
                 alt="Andrei Opulencia profile picture"
-                className="relative w-full h-auto rounded-lg object-cover filter brightness-75 shadow-md" // Binago dito: rounded-full -> rounded-lg
+                className="relative w-full h-auto rounded-lg object-cover filter brightness-75 shadow-md"
               />
             </div>
 
-            {/* MOBILE BUTTONS */}
             <motion.div
               ref={mobileButtonRef}
               variants={container("bottom", 0.6)}
@@ -142,61 +199,126 @@ const Hero = () => {
               className="mt-6 flex flex-col sm:flex-row gap-4 lg:hidden w-full max-w-md"
             >
               <a
-                href=""
-                download=""
+                href="Opulencia_CV.pdf"
+                download="Opulencia_CV.pdf"
                 aria-label="Download Andrei Opulencia's CV"
-                className="border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-cyan-500 hover:text-gray-900 hover:rotate-2 transition-all duration-300 text-center"
+                className="border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-gray-800 hover:border-gray-600 transition-all duration-300 text-center"
               >
                 Download CV
               </a>
               <button
                 onClick={() => setIsModalOpen(true)}
-                aria-label="Open contact information modal"
-                className="border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-cyan-500 hover:text-gray-900 hover:-rotate-2 transition-all duration-300 text-center"
+                aria-label="Open contact form"
+                className="border border-white text-white px-6 py-2 rounded-md font-medium hover:bg-gray-800 hover:border-gray-600 transition-all duration-300 text-center"
               >
-                Let's Connect
+                Contact Me
               </button>
             </motion.div>
           </div>
         </div>
       </div>
 
-      {/* MODAL */}
+      {/* CONTACT FORM MODAL */}
       {isModalOpen && (
         <motion.div
-          className="fixed inset-0 flex items-center justify-center z-50"
+          className="fixed inset-0 flex items-end lg:items-center justify-center z-50 lg:pt-0 pt-16 bg-black/50"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          onClick={() => setIsModalOpen(false)}
+          onClick={closeModal}
         >
           <motion.div
             variants={modalVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="relative bg-gray-900/30 backdrop-blur-lg rounded-xl p-8 w-full max-w-md mx-4 border border-gray-700/50 shadow-2xl"
+            drag  // Enable dragging in both x and y directions
+            dragElastic={0.1}  // Slight elasticity for smoother feel
+            whileDrag={{ cursor: "grabbing" }}  // Changes cursor to closed hand while dragging
+            className="relative bg-gray-900/95 backdrop-blur-lg rounded-t-xl lg:rounded-xl p-6 lg:p-8 w-full max-w-md mx-4 border border-gray-700/50 shadow-2xl max-h-[90vh] overflow-y-auto cursor-grab select-none"  // cursor-grab for open hand, select-none to prevent text selection during drag
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-3xl font-semibold text-white mb-6 tracking-tight">Contact Me</h2>
-            <ul className="space-y-4">
-              {contactInfo.map((info, index) => (
-                <li key={index} className="flex items-center gap-3 text-gray-200">
-                  <span className="font-medium text-white">{info.platform}:</span>
-                  <a
-                    href={info.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
-                  >
-                    {info.value}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {/* Optional: Add a drag handle bar for better UX */}
+            <div className="flex justify-center mb-4">
+              <div className="w-12 h-1 bg-gray-600 rounded-full cursor-grab"></div>
+            </div>
+            
+            <h2 className="text-2xl lg:text-3xl font-semibold text-white mb-6 tracking-tight text-center">Contact Me</h2>
+            
+            {submitStatus === 'success' && (
+              <div className="mb-4 p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-green-400 text-center text-sm font-medium">
+                Thank you! Your message has been sent. I'll reply soon.
+              </div>
+            )}
+            
+            {submitStatus === 'error' && (
+              <div className="mb-4 p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-center text-sm font-medium">
+                Something went wrong. Please try again or email me directly. Check console for details.
+              </div>
+            )}
+
+            <form ref={formRef} onSubmit={sendEmail} className="space-y-4">
+              <div>
+                <label htmlFor="user_name" className="block text-sm font-medium text-gray-300 mb-1">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="user_name"
+                  name="user_name"
+                  required
+                  className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                  placeholder="Name"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="user_email" className="block text-sm font-medium text-gray-300 mb-1">
+                  Your Email
+                </label>
+                <input
+                  type="email"
+                  id="user_email"
+                  name="user_email"
+                  required
+                  className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                  placeholder="e.g., john@example.com"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={4}
+                  className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                  placeholder="Tell me about your project or how we can collaborate..."
+                />
+              </div>
+              
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-colors duration-200"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Sending...
+                  </>
+                ) : (
+                  'Send Message'
+                )}
+              </button>
+            </form>
+            
             <button
-              onClick={() => setIsModalOpen(false)}
-              className="mt-8 w-full bg-gradient-to-r from-pink-500 to-cyan-400 text-white px-6 py-3 rounded-lg font-medium hover:from-pink-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105"
+              onClick={closeModal}
+              className="mt-4 w-full text-gray-400 hover:text-gray-200 transition-colors duration-200 text-sm font-medium"
             >
               Close
             </button>
