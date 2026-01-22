@@ -1,4 +1,4 @@
-import { FaLinkedin, FaGithub, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaInstagram, FaTiktok, FaYoutube, FaDiscord } from "react-icons/fa";
 
 const Navbar = () => {
   return (
@@ -52,6 +52,36 @@ const Navbar = () => {
           </a>
           <span className="absolute top-6 text-xs bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-200 pointer-events-none">
             TikTok
+          </span>
+        </div>
+
+        {/* YouTube */}
+        <div className="group relative flex flex-col items-center">
+          <a
+            href="https://www.youtube.com/@XenOfficial_YT"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition duration-300 hover:scale-110 hover:opacity-60 text-red-600"
+          >
+            <FaYoutube />
+          </a>
+          <span className="absolute top-6 text-xs bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-200 pointer-events-none">
+            YouTube
+          </span>
+        </div>
+
+        {/* Discord */}
+        <div className="group relative flex flex-col items-center">
+          <a
+            href="https://discord.gg/wMzZ5mPS"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition duration-300 hover:scale-110 hover:opacity-60 text-[#5865F2]"
+          >
+            <FaDiscord />
+          </a>
+          <span className="absolute top-6 text-xs bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-200 pointer-events-none">
+            Discord
           </span>
         </div>
 

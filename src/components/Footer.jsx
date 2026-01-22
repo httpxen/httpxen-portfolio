@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaLinkedin, FaGithub, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaInstagram, FaTiktok, FaYoutube, FaDiscord } from "react-icons/fa";
 
 const Footer = () => {
   const container = {
@@ -29,6 +29,19 @@ const Footer = () => {
       label: "TikTok",
       icon: <FaTiktok />,
       color: "text-white hover:drop-shadow-[0_0_6px_#ff0050]",
+    },
+    {
+      href: "https://www.youtube.com/@XenOfficial_YT", 
+      label: "YouTube",
+      icon: <FaYoutube />,
+      color: "text-[#FF0000] hover:drop-shadow-[0_0_6px_#FF0000]",
+    },
+    
+    {
+      href: "https://discord.gg/wMzZ5mPS", 
+      label: "Discord",
+      icon: <FaDiscord />,
+      color: "text-[#5865F2] hover:drop-shadow-[0_0_6px_#5865F2]",
     },
     {
       href: "https://www.instagram.com/drei_xen/",
