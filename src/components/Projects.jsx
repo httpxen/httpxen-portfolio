@@ -9,8 +9,10 @@ const techColors = {
   Tailwindcss: "bg-cyan-500/20 text-cyan-400 border border-cyan-500/40",
   Bootstrap: "bg-purple-600/20 text-purple-500 border border-purple-600/40",
   React: "bg-sky-500/20 text-sky-400 border border-sky-500/40",
-  "Next.js": "bg-neutral-100/20 text-white border border-neutral-200/40",
+  TypeScript: "bg-blue-500/20 text-blue-400 border border-cyan-500/40",
+  "Next.js": "bg-black text-white border border-neutral-800 hover:bg-neutral-900 transition-colors",
   JavaScript: "bg-yellow-400/20 text-yellow-300 border border-yellow-400/40",
+  Vercel: "bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors",
   Java: "bg-red-600/20 text-red-500 border border-red-600/40",
   Lua: "bg-blue-700/20 text-blue-600 border border-blue-700/40",
   PHP: "bg-purple-500/20 text-purple-400 border border-purple-500/40",
@@ -23,62 +25,36 @@ const techColors = {
   PostgreSQL: "bg-sky-700/20 text-sky-600 border border-sky-700/40",
   XAMPP: "bg-orange-500/20 text-orange-400 border border-orange-500/40",
   MySQL: "bg-yellow-500/20 text-yellow-400 border border-yellow-500/40",
-  Express: "bg-gray-500/20 text-gray-300 border border-gray-500/40",
   OpenAI: "bg-emerald-500/20 text-emerald-400 border border-emerald-500/40",
+  Cloudflare: "bg-orange-500/20 text-orange-500 border border-orange-500/40",
   Default: "bg-neutral-800 text-purple-300 border border-neutral-700",
 };
 
 const slideDown = {
   hidden: { y: -50, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 const slideRight = {
   hidden: { x: -100, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
+  visible: { x: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 const slideLeft = {
   hidden: { x: 100, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
+  visible: { x: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 const modalVariants = {
   hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.3, ease: "easeOut" },
-  },
-  exit: {
-    opacity: 0,
-    scale: 0.8,
-    transition: { duration: 0.2, ease: "easeIn" },
-  },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.3, ease: "easeOut" } },
+  exit: { opacity: 0, scale: 0.8, transition: { duration: 0.2, ease: "easeIn" } },
 };
 
 const Projects = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-
-  const openModal = (image) => {
-    setSelectedImage(image);
-  };
-
-  const closeModal = () => {
-    setSelectedImage(null);
-  };
+  const openModal = (image) => setSelectedImage(image);
+  const closeModal = () => setSelectedImage(null);
 
   return (
     <div className="border-b border-neutral-900 pb-4 px-6 lg:px-20">
@@ -95,7 +71,7 @@ const Projects = () => {
       <div>
         {PROJECTS.map((project, index) => (
           <div key={index} className="mb-12 flex flex-wrap lg:justify-center">
-            {/* Project Image with Click to Zoom */}
+            {/* Project Image */}
             <motion.div
               variants={slideRight}
               initial="hidden"
@@ -121,18 +97,35 @@ const Projects = () => {
               viewport={{ once: false, amount: 0.4 }}
               className="w-full max-w-xl lg:w-3/4"
             >
-              <h6 className="mb-2 text-2xl font-semibold text-white">
-                {project.title}
-              </h6>
+              {/* Refactored Title & Demo Link */}
+              <div className="flex items-center justify-between mb-2">
+                <h6 className="text-2xl font-semibold text-white">
+                  {project.title}
+                </h6>
+                {project.demoLink && (
+                  <a
+                    href={project.demoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
+                  >
+                    <span>Live Demo</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
+              </div>
+
               <p className="mb-4 text-neutral-400">{project.description}</p>
 
               {/* Tech Badges */}
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech, index) => {
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.technologies.map((tech, idx) => {
                   const colorClass = techColors[tech] || techColors.Default;
                   return (
                     <span
-                      key={index}
+                      key={idx}
                       className={`rounded-full px-3 py-1 text-sm font-medium shadow-sm backdrop-blur-sm ${colorClass}`}
                     >
                       {tech}
@@ -145,7 +138,7 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* Modal for Zoomed Image */}
+      {/* Image Zoom Modal */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div
@@ -159,14 +152,14 @@ const Projects = () => {
             <motion.img
               src={selectedImage}
               alt="Zoomed project image"
-              className="max-w-[90%] max-h-[90%] rounded-xl shadow-lg"
-              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image
+              className="max-w-[90%] max-h-[90%] rounded-xl shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
             />
             <button
-              className="absolute top-4 right-4 text-white text-2xl font-bold"
+              className="absolute top-6 right-6 text-white text-4xl font-bold hover:text-cyan-400 transition-colors"
               onClick={closeModal}
             >
-              &times;
+              ×
             </button>
           </motion.div>
         )}

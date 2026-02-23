@@ -8,8 +8,10 @@ const techColors = {
   Tailwindcss: "bg-cyan-500/20 text-cyan-400 border border-cyan-500/40",
   Bootstrap: "bg-purple-600/20 text-purple-500 border border-purple-600/40",
   React: "bg-sky-500/20 text-sky-400 border border-sky-500/40",
-  "Next.js": "bg-neutral-100/20 text-white border border-neutral-200/40",
+  TypeScript: "bg-blue-500/20 text-blue-400 border border-cyan-500/40",
+  "Next.js": "bg-black text-white border border-neutral-800 hover:bg-neutral-900 transition-colors",
   JavaScript: "bg-yellow-400/20 text-yellow-300 border border-yellow-400/40",
+  Vercel: "bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors",
   Java: "bg-red-600/20 text-red-500 border border-red-600/40",
   Lua: "bg-blue-700/20 text-blue-600 border border-blue-700/40",
   PHP: "bg-purple-500/20 text-purple-400 border border-purple-500/40",
@@ -22,8 +24,8 @@ const techColors = {
   PostgreSQL: "bg-sky-700/20 text-sky-600 border border-sky-700/40",
   XAMPP: "bg-orange-500/20 text-orange-400 border border-orange-500/40",
   MySQL: "bg-yellow-500/20 text-yellow-400 border border-yellow-500/40",
-  Express: "bg-gray-500/20 text-gray-300 border border-gray-500/40",
-  // fallback
+  OpenAI: "bg-emerald-500/20 text-emerald-400 border border-emerald-500/40",
+  Cloudflare: "bg-orange-500/20 text-orange-500 border border-orange-500/40",
   Default: "bg-neutral-800 text-purple-300 border border-neutral-700",
 };
 
