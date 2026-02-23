@@ -52,17 +52,21 @@ export const GALLERY_ITEMS = [
   },
   {
     id: 3,
+    title: "Local Environment Setup & Repository Cloning",
+    company: "Colegio de San Juan de Letran Calamba | Facilities Management and General Services Division",
     category: "OJT",
-    src: "/assets/images/ojt-2.jpg",
-    title: "System Workflow",
-    year: "2024"
+    description: "Facilitating the transfer of the project's source code from GitHub to the office's local desktop to establish a stable development environment for testing and deployment.",
+    src: "ojt-2.jpg",
+    year: "2025"
   },
   {
     id: 4,
+    title: "Feature Validation & PDF Output Testing",
+    company: "Calamba Water District",
     category: "Capstone",
-    src: "/assets/images/capstone-2.jpg",
-    title: "Stakeholder Meeting",
-    year: "2024"
+    description: "Conducting quality assurance tests on the complaint management module to ensure that data filtering by year and month correctly exports into a formatted PDF document.",
+    src: "capstone-2.jpg",
+    year: "2025 to 2026"
   },
   {
     id: 5,
@@ -70,9 +74,18 @@ export const GALLERY_ITEMS = [
     company: "Colegio de San Juan de Letran Calamba | Facilities Management and General Services Division",
     description: "Marking the successful conclusion of our internship program. Grateful for the invaluable professional guidance and technical mentorship provided by our supervisor throughout our stay.",
     category: "OJT",
-    src: "/ojt-3.jpg",
+    src: "ojt-3.jpg",
     year: "2025"
   },
+  {
+    id: 6,
+    title: "System Deployment & Client Handover",
+    company: "Calamba Water District",
+    category: "Capstone",
+    description: "Successfully deploying the developed system to the client's production environment and providing comprehensive documentation and training to ensure smooth handover and client autonomy in system management.",
+    src: "capstone-3.jpg",
+    year: "2025 to 2026"
+  }
 ];
 
 export const PROJECTS = [
