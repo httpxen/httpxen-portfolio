@@ -1,11 +1,12 @@
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Experience from "./components/Experience";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import Projects from "./components/Projects";
+import Hero from "./components/Hero";
+import About from "./components/About";
 import Technologies from "./components/Technologies";
+import Experience from "./components/Experience";
+import Gallery from "./components/Gallery";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
       <About />
       <Technologies />
       <Experience />
+      <Gallery />
       <Projects />
       <Contact />
       <Footer />

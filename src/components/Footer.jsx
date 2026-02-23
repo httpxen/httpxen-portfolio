@@ -38,7 +38,7 @@ const Footer = () => {
     },
     
     {
-      href: "https://discord.gg/wMzZ5mPS", 
+      href: "https://discord.gg/ms2cQ895GV", 
       label: "Discord",
       icon: <FaDiscord />,
       color: "text-[#5865F2] hover:drop-shadow-[0_0_6px_#5865F2]",

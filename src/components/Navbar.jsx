@@ -73,7 +73,7 @@ const Navbar = () => {
         {/* Discord */}
         <div className="group relative flex flex-col items-center">
           <a
-            href="https://discord.gg/wMzZ5mPS"
+            href="https://discord.gg/ms2cQ895GV"
             target="_blank"
             rel="noopener noreferrer"
             className="transition duration-300 hover:scale-110 hover:opacity-60 text-[#5865F2]"
