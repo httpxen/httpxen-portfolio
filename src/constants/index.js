@@ -29,21 +29,67 @@ export const EXPERIENCES = [
   },
 ];
 
+export const GALLERY_CATEGORIES = ["All", "OJT", "Capstone"];
+
+export const GALLERY_ITEMS = [
+  {
+    id: 1,
+    title: "System Presentation & Walkthrough",
+    company: "Colegio de San Juan de Letran Calamba | Facilities Management and General Services Division",
+    category: "OJT",
+    description: "A collaborative session involving the presentation and walkthrough of the developed system with the supervisor to ensure it meets technical requirements and project goals.",
+    src: "/ojt-1.jpg",                    
+    year: "2025"
+  },
+  {
+    id: 2,
+    title: "User Acceptance Testing & Client Feedback",
+    company: "Calamba Water District",
+    category: "Capstone",
+    description: "Facilitating a User Acceptance Testing (UAT) session with the client to validate system workflows and ensure all functional requirements are met before final deployment.",
+    src: "capstone-1.jpg", 
+    year: "2025 to 2026"
+  },
+  {
+    id: 3,
+    category: "OJT",
+    src: "/assets/images/ojt-2.jpg",
+    title: "System Workflow",
+    year: "2024"
+  },
+  {
+    id: 4,
+    category: "Capstone",
+    src: "/assets/images/capstone-2.jpg",
+    title: "Stakeholder Meeting",
+    year: "2024"
+  },
+  {
+    id: 5,
+    title: "Successful Internship Completion",
+    company: "Colegio de San Juan de Letran Calamba | Facilities Management and General Services Division",
+    description: "Marking the successful conclusion of our internship program. Grateful for the invaluable professional guidance and technical mentorship provided by our supervisor throughout our stay.",
+    category: "OJT",
+    src: "/ojt-3.jpg",
+    year: "2025"
+  },
+];
+
 export const PROJECTS = [
   {
     title: "AquaSense",
     image: project1,
     description:
       "An AI-powered complaint and feedback management system for Calamba Water District that integrates a web-based platform, chatbot, sentiment analysis, and analytics dashboard to streamline customer service and enhance transparency.",
-    technologies: ["HTML", "MySQL", "PHP", "Tailwindcss", "JavaScript", "NodeJS", "OpenAI" , "Cloudflare"],
+    technologies: ["HTML", "MySQL", "PHP", "Tailwindcss", "JavaScript", "OpenAI", "Cloudflare"],
     demoLink: "https://cwdaquasense.com/",
   },
   {
-    title: "Prestige – Game Developer Portfolio",
+    title: "Prestige Game Developer Portfolio",
     image: project2,
     description:
       "A professionally designed and developed portfolio website for an independent Game Developer client. I led the full design and development process, focusing on modern UI, performance optimization, and clear project presentation to effectively showcase the developer’s expertise and game projects.",
-    technologies: ["TypeScript", "Next.js", "Tailwindcss", "JavaScript", "Vercel"],
+    technologies: ["TypeScript", "Tailwindcss", "JavaScript", "Next.js", "Vercel"],
     demoLink: "https://prestige-portfolio.vercel.app/",
   },
   {
