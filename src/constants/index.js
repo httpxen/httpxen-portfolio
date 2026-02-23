@@ -43,7 +43,7 @@ export const PROJECTS = [
     image: project2,
     description:
       "A professionally designed and developed portfolio website for an independent Game Developer client. I led the full design and development process, focusing on modern UI, performance optimization, and clear project presentation to effectively showcase the developer’s expertise and game projects.",
-    technologies: ["TypeScript", "Next.js", "TailwindCSS", "JavaScript", "Vercel"],
+    technologies: ["TypeScript", "Next.js", "Tailwindcss", "JavaScript", "Vercel"],
     demoLink: "https://prestige-portfolio.vercel.app/",
   },
   {
