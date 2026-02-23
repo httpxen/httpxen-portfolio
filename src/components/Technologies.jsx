@@ -6,6 +6,9 @@ import { SiMongodb, SiTailwindcss, SiBootstrap, SiLaravel, SiNpm, SiJavascript, 
 import { DiRedis } from "react-icons/di";
 import { FaNodeJs, FaHtml5, FaCss3Alt, FaPhp, FaJava } from "react-icons/fa";
 import { BiLogoPostgresql } from "react-icons/bi";
+import { SiTypescript, SiNextdotjs } from "react-icons/si";
+import { SiVercel } from "react-icons/si";
+import { SiCloudflare } from "react-icons/si";
 import { motion, useAnimation, useReducedMotion } from "framer-motion";
 
 const Technologies = () => {
@@ -21,6 +24,7 @@ const Technologies = () => {
     { Icon: SiTailwindcss, name: "Tailwind CSS", color: "text-cyan-500", duration: 2.5 },
     { Icon: SiBootstrap, name: "Bootstrap", color: "text-purple-600", duration: 2.3 },
     { Icon: RiReactjsLine, name: "React", color: "text-cyan-400", duration: 2.5 },
+    { Icon: SiTypescript, name: "TypeScript", color: "text-blue-600", duration: 2.8 },
     { Icon: TbBrandNextjs, name: "Next.js", color: "text-white", duration: 3 },
     { Icon: SiJavascript, name: "Javascript", color: "text-yellow-400", duration: 2.7 },
     { Icon: FaJava, name: "Java", color: "text-red-600", duration: 3.2 },
@@ -29,6 +33,7 @@ const Technologies = () => {
     { Icon: SiPython, name: "Python", color: "text-yellow-500", duration: 3 },
     { Icon: SiLaravel, name: "Laravel", color: "text-red-500", duration: 3.1 },
     { Icon: FaNodeJs, name: "Node.js", color: "text-green-500", duration: 3 },
+    { Icon: SiVercel, name: "Vercel", color: "text-white", duration: 2.5 },
     { Icon: SiNpm, name: "Npm", color: "text-red-600", duration: 2.4 },
     { Icon: SiVite, name: "Vite", color: "text-purple-400", duration: 2.6 },
     { Icon: SiMongodb, name: "MongoDB", color: "text-green-500", duration: 2.5 },
@@ -36,6 +41,7 @@ const Technologies = () => {
     { Icon: SiApache, name: "XAMPP", color: "text-orange-500", duration: 2.4 },
     { Icon: SiMysql, name: "MySQL", color: "text-blue-600", duration: 2.3 },
     { Icon: SiOpenai, name: "OpenAI", color: "text-blue-600", duration: 2.8 }, 
+    { Icon: SiCloudflare, name: "Cloudflare", color: "text-orange-500", duration: 2.4 },
   ];
 
   // Calculate container width
