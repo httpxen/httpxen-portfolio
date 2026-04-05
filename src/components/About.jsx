@@ -26,6 +26,19 @@ const About = () => {
           className="flex flex-col items-center lg:items-end w-full lg:w-1/2"
         >
           <div className="relative w-[250px] sm:w-[300px] md:w-[350px] h-[250px] sm:h-[300px] md:h-[350px] rounded-xl shadow-lg overflow-hidden group">
+            
+            {/* --- ADDED: LIVE STATUS BADGE --- */}
+            <div className="absolute top-3 left-3 z-10 flex items-center gap-2 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-green-500/40">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-green-400">
+                Available for Work
+              </span>
+            </div>
+            {/* ---------------------------- */}
+
             <img
               src={aboutImg}
               alt="Andrei Opulencia"
@@ -65,7 +78,7 @@ const About = () => {
             {ABOUT_TEXT}
           </p>
 
-          {/* Stats Cards */}
+          {/* Stats Cards - STAYS THE SAME */}
           <div className="grid grid-cols-3 gap-4 mt-8 w-full lg:w-auto">
             <motion.div
               whileHover={{ scale: 1.05 }}

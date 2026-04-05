@@ -109,33 +109,40 @@ const Experience = () => {
                   );
                 })}
               </div>
+
+              {/* MAPS SECTION */}
               {experience.company === "Colegio de San Juan de Letran Calamba | Facilities Management and General Services Division" && (
                 <div className="mt-4">
                   <p className="text-sm text-neutral-400 mb-2">Location: Colegio de San Juan de Letran Calamba</p>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3868.103362077727!2d121.16540599999999!3d14.188723899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd63e1282e62d9%3A0x9d6626d9f156784d!2sColegio%20de%20San%20Juan%20de%20Letran%20Calamba!5e0!3m2!1sen!2sph!4v1756019833478!5m2!1sen!2sph"
+                    title="Letran Calamba Satellite View"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3867.545233633644!2d121.15781417584144!3d14.220800085581176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd63e1282e62d9%3A0x9d6626d9f156784d!2sColegio%20de%20San%20Juan%20de%20Letran%20Calamba!5e1!3m2!1sen!2sph!4v1715800000000!5m2!1sen!2sph&maptype=satellite"
                     width="100%"
                     height="300"
                     style={{ border: 0 }}
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="rounded-lg shadow-lg max-w-full"
+                    // Tinanggal ang 'grayscale' at 'hover:grayscale-0'
+                    className="rounded-lg shadow-lg max-w-full transition-all duration-500"
                   ></iframe>
                 </div>
               )}
+
               {experience.company.includes("Calamba Water District") && (
                 <div className="mt-4">
                   <p className="text-sm text-neutral-400 mb-2">Client: Calamba Water District</p>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d607.7666078113074!2d121.16447046578175!3d14.192613288006056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd63dde4221d71%3A0x2b48f46c8c2e3e91!2sCalamba%20Water%20District!5e0!3m2!1sen!2sph!4v1756021392731!5m2!1sen!2sph"
+                    title="CWD Satellite View"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3867.7554347714456!2d121.16668727584119!3d14.20912178558913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd63dd49221d71%3A0x482bcc076e2e3e91!2sCalamba%20Water%20District!5e1!3m2!1sen!2sph!4v1715800000000!5m2!1sen!2sph&maptype=satellite"
                     width="100%"
                     height="300"
                     style={{ border: 0 }}
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="rounded-lg shadow-lg max-w-full"
+                    // Tinanggal ang 'grayscale' at 'hover:grayscale-0'
+                    className="rounded-lg shadow-lg max-w-full transition-all duration-500"
                   ></iframe>
                 </div>
               )}
