@@ -94,7 +94,7 @@ export const PROJECTS = [
     image: project1,
     description:
       "An AI-powered complaint and feedback management system for Calamba Water District that integrates a web-based platform, chatbot, sentiment analysis, and analytics dashboard to streamline customer service and enhance transparency.",
-    technologies: ["HTML", "MySQL", "PHP", "Tailwindcss", "JavaScript", "OpenAI", "Cloudflare"],
+    technologies: ["HTML", "MySQL", "PHP", "Tailwindcss", "JavaScript", "OpenAI", "Cloudflare", "Hostinger"],
     demoLink: "https://cwdaquasense.com/",
   },
   {

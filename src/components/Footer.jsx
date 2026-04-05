@@ -1,5 +1,13 @@
 import { motion } from "framer-motion";
-import { FaLinkedin, FaGithub, FaInstagram, FaTiktok, FaYoutube, FaDiscord } from "react-icons/fa";
+import { 
+  FaLinkedin, 
+  FaGithub, 
+  FaInstagram, 
+  FaTiktok, 
+  FaYoutube, 
+  FaDiscord, 
+  FaFacebook // Inimport ang Facebook icon
+} from "react-icons/fa";
 
 const Footer = () => {
   const container = {
@@ -24,6 +32,13 @@ const Footer = () => {
       icon: <FaGithub />,
       color: "text-white hover:drop-shadow-[0_0_6px_#ffffff]",
     },
+    // Idinagdag ang Facebook dito
+    {
+      href: "https://www.facebook.com/andrei.opulencia.9/", // Palitan mo na lang ng actual link mo
+      label: "Facebook",
+      icon: <FaFacebook />,
+      color: "text-[#1877F2] hover:drop-shadow-[0_0_6px_#1877F2]",
+    },
     {
       href: "https://www.tiktok.com/@drei_xen",
       label: "TikTok",
@@ -36,7 +51,6 @@ const Footer = () => {
       icon: <FaYoutube />,
       color: "text-[#FF0000] hover:drop-shadow-[0_0_6px_#FF0000]",
     },
-    
     {
       href: "https://discord.gg/ms2cQ895GV", 
       label: "Discord",
@@ -63,7 +77,7 @@ const Footer = () => {
         className="flex flex-col items-center gap-6"
       >
         {/* Social Icons */}
-        <div className="flex items-center justify-center gap-8 text-2xl">
+        <div className="flex flex-wrap items-center justify-center gap-8 text-2xl">
           {socials.map((s, i) => (
             <div key={i} className="group relative flex flex-col items-center">
               <a
@@ -87,17 +101,14 @@ const Footer = () => {
           <span className="text-white">Andrei Opulencia</span>. All rights reserved.
         </p>
 
-        {/* Updating Note - Improved Visibility */}
+        {/* Updating Note */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8, ease: "easeInOut" }}
           className="flex items-center gap-2 text-sm sm:text-base font-medium mt-3"
         >
-          {/* Gradient Spinner */}
           <span className="w-4 h-4 border-2 border-pink-500 border-t-yellow-400 rounded-full animate-spin"></span>
-          
-          {/* Gradient Text with shadow */}
           <span className="bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 bg-clip-text text-transparent animate-pulse drop-shadow-[0_0_4px_rgba(255,255,255,0.4)]">
             Still updating — more features and changes coming soon.
           </span>
