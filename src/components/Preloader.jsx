@@ -3,22 +3,34 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const words = ["FRONT END", "BACKEND", "FULL STACK", "CREATIVE"];
 
+const PRELOADER_KEY = 'preloader_last_shown';
+const EXPIRY_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+const shouldShowPreloader = () => {
+  const lastShown = localStorage.getItem(PRELOADER_KEY);
+  if (!lastShown) return true; // first time ever
+  return Date.now() - Number(lastShown) > EXPIRY_MS; // expired na
+};
+
 const Preloader = ({ finishLoading }) => {
   const [index, setIndex] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    // Word cycler logic
+    if (!shouldShowPreloader()) {
+      finishLoading();
+      return;
+    }
+    // I-save ang timestamp ngayon
+    localStorage.setItem(PRELOADER_KEY, String(Date.now()));
+  }, []);
+
+  useEffect(() => {
     if (index < words.length - 1) {
-      const timer = setTimeout(() => {
-        setIndex(prev => prev + 1);
-      }, 1100); 
+      const timer = setTimeout(() => setIndex(prev => prev + 1), 1100);
       return () => clearTimeout(timer);
     } else {
-      // Kapag nasa huling salita na, mag-uumpisa na ang exit animation ng strips
-      const exitTimer = setTimeout(() => {
-        setIsExiting(true);
-      }, 1500); 
+      const exitTimer = setTimeout(() => setIsExiting(true), 1500);
       return () => clearTimeout(exitTimer);
     }
   }, [index]);
@@ -29,17 +41,12 @@ const Preloader = ({ finishLoading }) => {
     initial: { y: "0%" },
     exit: (i) => ({
       y: "-100%",
-      transition: {
-        duration: 0.8,
-        delay: i * 0.1,
-        ease: [1, 0, 0, 1], 
-      },
+      transition: { duration: 0.8, delay: i * 0.1, ease: [1, 0, 0, 1] },
     }),
   };
 
   return (
     <div className="fixed inset-0 z-[9999] overflow-hidden">
-      {/* 1. Black Strips (Transition) */}
       <div className="absolute inset-0 flex z-10 pointer-events-none">
         {Array.from({ length: nbOfColumns }).map((_, i) => (
           <motion.div
@@ -48,10 +55,7 @@ const Preloader = ({ finishLoading }) => {
             initial="initial"
             animate={isExiting ? "exit" : "initial"}
             onAnimationComplete={() => {
-              // Trigger lang ang finishLoading kapag ang PINAKAHULING strip ay nakalampas na
-              if (isExiting && i === nbOfColumns - 1) {
-                finishLoading();
-              }
+              if (isExiting && i === nbOfColumns - 1) finishLoading();
             }}
             custom={i}
             className="flex-1 bg-[#0a0a0a] border-r border-white/5"
@@ -59,7 +63,6 @@ const Preloader = ({ finishLoading }) => {
         ))}
       </div>
 
-      {/* 2. Text Content */}
       <AnimatePresence mode="wait">
         {!isExiting && (
           <motion.div
@@ -67,12 +70,10 @@ const Preloader = ({ finishLoading }) => {
             exit={{ opacity: 0, y: -20, transition: { duration: 0.5 } }}
             className="relative z-20 flex flex-col items-center justify-center h-full w-full bg-[#0a0a0a]"
           >
-            {/* Counter */}
             <motion.p className="font-mono text-[10px] tracking-[6px] text-cyan-400 mb-8 opacity-50">
               0{index + 1} / 0{words.length}
             </motion.p>
 
-            {/* Word Transition */}
             <div className="h-[120px] flex items-center justify-center overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.h1
@@ -88,7 +89,6 @@ const Preloader = ({ finishLoading }) => {
               </AnimatePresence>
             </div>
 
-            {/* Progress Bar */}
             <div className="w-48 h-[1px] bg-white/10 mt-12 relative">
               <motion.div
                 animate={{ width: `${((index + 1) / words.length) * 100}%` }}
