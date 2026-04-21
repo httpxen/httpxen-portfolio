@@ -1,34 +1,145 @@
 import { EXPERIENCES } from "../constants";
 import { motion } from "framer-motion";
 
-// Color mapping para sa tech stack
-const techColors = {
-  HTML: "bg-orange-500/20 text-orange-400 border border-orange-500/40",
-  CSS: "bg-blue-500/20 text-blue-400 border border-blue-500/40",
-  Tailwindcss: "bg-cyan-500/20 text-cyan-400 border border-cyan-500/40",
-  Bootstrap: "bg-purple-600/20 text-purple-500 border border-purple-600/40",
-  React: "bg-sky-500/20 text-sky-400 border border-sky-500/40",
-  TypeScript: "bg-blue-500/20 text-blue-400 border border-cyan-500/40",
-  "Next.js": "bg-black text-white border border-neutral-800 hover:bg-neutral-900 transition-colors",
-  JavaScript: "bg-yellow-400/20 text-yellow-300 border border-yellow-400/40",
-  Vercel: "bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors",
-  Java: "bg-red-600/20 text-red-500 border border-red-600/40",
-  Lua: "bg-blue-700/20 text-blue-600 border border-blue-700/40",
-  PHP: "bg-purple-500/20 text-purple-400 border border-purple-500/40",
-  Laravel: "bg-red-500/20 text-red-400 border border-red-500/40",
-  NodeJS: "bg-green-500/20 text-green-400 border border-green-500/40",
-  Python: "bg-blue-500/20 text-yellow-300 border border-blue-500/40",
-  Npm: "bg-red-600/20 text-red-500 border border-red-600/40",
-  Vite: "bg-purple-400/20 text-purple-300 border border-purple-400/40",
-  MongoDB: "bg-green-500/20 text-green-400 border border-green-500/40",
-  PostgreSQL: "bg-sky-700/20 text-sky-600 border border-sky-700/40",
-  XAMPP: "bg-orange-500/20 text-orange-400 border border-orange-500/40",
-  MySQL: "bg-yellow-500/20 text-yellow-400 border border-yellow-500/40",
-  OpenAI: "bg-emerald-500/20 text-emerald-400 border border-emerald-500/40",
-  Cloudflare: "bg-orange-500/20 text-orange-500 border border-orange-500/40",
-  Default: "bg-neutral-800 text-purple-300 border border-neutral-700",
+// ==================== TECH ICONS ====================
+import { 
+  FaHtml5, 
+  FaJava 
+} from "react-icons/fa";
+
+import { 
+  RiCss3Fill, 
+  RiJavascriptFill, 
+  RiReactjsLine, 
+  RiNodejsLine, 
+  RiTailwindCssFill, 
+  RiBootstrapFill 
+} from "react-icons/ri";
+
+import { 
+  SiTypescript, 
+  SiNextdotjs, 
+  SiVercel, 
+  SiLua, 
+  SiPhp, 
+  SiLaravel, 
+  SiPython, 
+  SiNpm, 
+  SiVite, 
+  SiMongodb, 
+  SiPostgresql, 
+  SiXampp, 
+  SiMysql, 
+  SiOpenai, 
+  SiCloudflare,
+  SiHostinger
+} from "react-icons/si";
+
+// ==================== TECH STACK DATA ====================
+const techStackData = {
+  HTML: { 
+    class: "bg-orange-500/20 text-orange-400 border border-orange-500/40", 
+    icon: <FaHtml5 className="text-xl" /> 
+  },
+  CSS: { 
+    class: "bg-blue-500/20 text-blue-400 border border-blue-500/40", 
+    icon: <RiCss3Fill className="text-xl" /> 
+  },
+  Tailwindcss: { 
+    class: "bg-cyan-500/20 text-cyan-400 border border-cyan-500/40", 
+    icon: <RiTailwindCssFill className="text-xl" /> 
+  },
+  Bootstrap: { 
+    class: "bg-purple-600/20 text-purple-500 border border-purple-600/40", 
+    icon: <RiBootstrapFill className="text-xl" /> 
+  },
+  React: { 
+    class: "bg-sky-500/20 text-sky-400 border border-sky-500/40", 
+    icon: <RiReactjsLine className="text-xl" /> 
+  },
+  TypeScript: { 
+    class: "bg-blue-500/20 text-blue-400 border border-blue-500/40", 
+    icon: <SiTypescript className="text-xl" /> 
+  },
+  "Next.js": { 
+    class: "bg-black text-white border border-neutral-800 hover:bg-neutral-900", 
+    icon: <SiNextdotjs className="text-xl" /> 
+  },
+  JavaScript: { 
+    class: "bg-yellow-400/20 text-yellow-300 border border-yellow-400/40", 
+    icon: <RiJavascriptFill className="text-xl" /> 
+  },
+  Vercel: { 
+    class: "bg-white/10 text-white border border-white/20 hover:bg-white/20", 
+    icon: <SiVercel className="text-xl" /> 
+  },
+  Java: { 
+    class: "bg-red-600/20 text-red-500 border border-red-600/40", 
+    icon: <FaJava className="text-xl" /> 
+  },
+  Lua: { 
+    class: "bg-blue-700/20 text-blue-600 border border-blue-700/40", 
+    icon: <SiLua className="text-xl" /> 
+  },
+  PHP: { 
+    class: "bg-purple-500/20 text-purple-400 border border-purple-500/40", 
+    icon: <SiPhp className="text-xl" /> 
+  },
+  Laravel: { 
+    class: "bg-red-500/20 text-red-400 border border-red-500/40", 
+    icon: <SiLaravel className="text-xl" /> 
+  },
+  NodeJS: { 
+    class: "bg-green-500/20 text-green-400 border border-green-500/40", 
+    icon: <RiNodejsLine className="text-xl" /> 
+  },
+  Python: { 
+    class: "bg-blue-500/20 text-yellow-300 border border-blue-500/40", 
+    icon: <SiPython className="text-xl" /> 
+  },
+  Npm: { 
+    class: "bg-red-600/20 text-red-500 border border-red-600/40", 
+    icon: <SiNpm className="text-xl" /> 
+  },
+  Vite: { 
+    class: "bg-purple-400/20 text-purple-300 border border-purple-400/40", 
+    icon: <SiVite className="text-xl" /> 
+  },
+  MongoDB: { 
+    class: "bg-green-500/20 text-green-400 border border-green-500/40", 
+    icon: <SiMongodb className="text-xl" /> 
+  },
+  PostgreSQL: { 
+    class: "bg-sky-700/20 text-sky-600 border border-sky-700/40", 
+    icon: <SiPostgresql className="text-xl" /> 
+  },
+  XAMPP: { 
+    class: "bg-orange-500/20 text-orange-400 border border-orange-500/40", 
+    icon: <SiXampp className="text-xl" /> 
+  },
+  MySQL: { 
+    class: "bg-yellow-500/20 text-yellow-400 border border-yellow-500/40", 
+    icon: <SiMysql className="text-xl" /> 
+  },
+  OpenAI: { 
+    class: "bg-emerald-500/20 text-emerald-400 border border-emerald-500/40", 
+    icon: <SiOpenai className="text-xl" /> 
+  },
+  Cloudflare: { 
+    class: "bg-orange-500/20 text-orange-500 border border-orange-500/40", 
+    icon: <SiCloudflare className="text-xl" /> 
+  },
+  Hostinger: { 
+    class: "bg-violet-600/20 text-violet-400 border border-violet-500/40", 
+    icon: <SiHostinger className="text-xl" /> 
+  },
+  Default: { 
+    class: "bg-neutral-800 text-purple-300 border border-neutral-700", 
+    icon: null 
+  },
 };
 
+// ==================== ANIMATION VARIANTS ====================
 const slideDown = {
   hidden: { y: -50, opacity: 0 },
   visible: {
@@ -96,14 +207,17 @@ const Experience = () => {
                 </span>
               </h6>
               <p className="mb-4 text-neutral-400">{experience.description}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {experience.technologies.map((tech, index) => {
-                  const colorClass = techColors[tech] || techColors.Default;
+
+              {/* Tech Badges with Icons */}
+              <div className="flex flex-wrap gap-3 mb-4">
+                {experience.technologies.map((tech, idx) => {
+                  const techInfo = techStackData[tech] || techStackData.Default;
                   return (
                     <span
-                      key={index}
-                      className={`rounded-full px-3 py-1 text-sm font-medium shadow-sm backdrop-blur-sm ${colorClass}`}
+                      key={idx}
+                      className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider border shadow-md backdrop-blur-md transition-all hover:scale-110 active:scale-95 ${techInfo.class}`}
                     >
+                      {techInfo.icon}
                       {tech}
                     </span>
                   );
@@ -123,7 +237,6 @@ const Experience = () => {
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    // Tinanggal ang 'grayscale' at 'hover:grayscale-0'
                     className="rounded-lg shadow-lg max-w-full transition-all duration-500"
                   ></iframe>
                 </div>
@@ -141,7 +254,6 @@ const Experience = () => {
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    // Tinanggal ang 'grayscale' at 'hover:grayscale-0'
                     className="rounded-lg shadow-lg max-w-full transition-all duration-500"
                   ></iframe>
                 </div>
