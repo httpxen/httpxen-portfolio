@@ -168,7 +168,7 @@ const Projects = () => {
   const closeModal = () => setSelectedImage(null);
 
   return (
-    <div className="border-b border-neutral-900 pb-4 px-6 lg:px-20">
+    <div className="pb-4 px-6 lg:px-20">
       <motion.h2
         variants={slideDown}
         initial="hidden"
