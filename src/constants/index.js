@@ -6,11 +6,32 @@ import project4 from "../assets/projects/project-4.png";
 import project5 from "../assets/projects/project-5.png";
 import project6 from "../assets/projects/project-6.png";
 
+/**
+ * * ==========================================
+ * * PERSONAL INFORMATION
+ * * ==========================================
+ * ? Contains core profile details for the portfolio landing page.
+ */
+
+/**
+ * * HERO_CONTENT
+ * * Primary introduction text displayed on the main hero section.
+ */
 export const HERO_CONTENT = `I am a passionate and motivated junior full stack developer and has solid foundation in both front-end and back-end technologies. I have experience building projects using HTML, PHP, Tailwind CSS, Bootstrap, Laravel, React, Next.js, Node.js, MySQL, Java, Javascript, Lua and I’m continuously expanding my knowledge to become a better developer. My goal is to contribute to real-world projects, collaborate with other developers, and create solutions that provide real value to users.`;
 
-
+/**
+ * * ABOUT_TEXT
+ * * Detailed background for the "About Me" section, highlighting web and game development.
+ */
 export const ABOUT_TEXT = `I am a dedicated and curious junior full stack developer with a strong passion for building clean, user-friendly, and efficient web applications also game development. I have experience working with HTML, PHP, Tailwind CSS, Bootstrap, Laravel, React, Next.js, Node.js, MySQL, MongoDB, Java, JavaScript, and Lua, and I am continuously expanding my knowledge to become a better developer. My goal is to contribute to real-world projects, collaborate with other developers, and create innovative solutions that deliver real value to users.`;
 
+
+/**
+ * * ==========================================
+ * * PROFESSIONAL EXPERIENCE
+ * * ==========================================
+ * ! Critical: Ensure years and tech stacks align with your official resume before deployment.
+ */
 export const EXPERIENCES = [
   {
     year: "2025",
@@ -28,8 +49,67 @@ export const EXPERIENCES = [
   },
 ];
 
+
+/**
+ * * ==========================================
+ * * TEAM & COMMUNITY MEMBERS
+ * * ==========================================
+ * ? List of core developers and community contributors.
+ */
+export const CODESMITH_MEMBERS = [
+  {
+    name: "XEN",
+    role: "Developer",
+    isLead: false, //! Alert: First Developer role. Do not alter without verification.
+    color: "#ff00ea",
+    banner: "https://i.pinimg.com/736x/73/6e/d9/736ed9035e99d721b9aef8b22243ec67.jpg",
+    avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuhLL5S2u8sD_fJf0yWfHlHI9lT8l0KRUmAQ&s",
+  },
+  {
+    name: "GXVIN",
+    role: "Developer",
+    isLead: true, // ! Alert: Second Developer role. 
+    color: "#05ff12",
+    banner: "https://i.pinimg.com/webp/736x/21/70/46/21704649a5e698cfe70a862e71784fb1.webp",
+    avatar: "https://i.pinimg.com/736x/51/b6/b4/51b6b404e5a029c5e97087340be4eb90.jpg",
+  },
+  {
+    name: "KLXDE",
+    role: "Developer",
+    isLead: false, // ! Alert: Third developer role.
+    color: "#ff9100",
+    banner: "https://i.pinimg.com/webp/1200x/81/d7/70/81d77056397cb93847c27be30ab26d6e.webp",
+    avatar: "https://i.pinimg.com/736x/55/d2/70/55d27070a307d55642dcdeea05025884.jpg",
+  },
+  {
+    name: "HXNC3",
+    role: "Developer",
+    isLead: false, // ! Alert: Fourth developer role.
+    color: "#fffb05",
+    banner: "https://i.pinimg.com/736x/ed/fa/c0/edfac010618e902a6004ca5e813890d9.jpg",
+    avatar: "https://i.pinimg.com/736x/70/81/76/708176298d3b8281e3f3325481e3cde9.jpg"
+  },
+];
+
+
+/**
+ * * ==========================================
+ * * TAGS & CATEGORIES (FILTERS)
+ * * ==========================================
+ */
+// ? Core technical skills rendered as showcase badges.
+export const TECH_TAGS = ["FIVEM", ,"ESX" ,"LUA" ,"CUSTOM SCRIPTS", "SERVER OPTIMIZATION", "UI & UX",];
+
+// ? Used for active category tab switching inside the gallery component.
 export const GALLERY_CATEGORIES = ["All", "OJT", "Capstone"];
 
+
+/**
+ * * ==========================================
+ * * GALLERY & DOCUMENTATION
+ * * ==========================================
+ * // TODO: Verify image path resolutions upon switching to a live production environment.
+ */
 export const GALLERY_ITEMS = [
   {
     id: 1,
@@ -87,54 +167,61 @@ export const GALLERY_ITEMS = [
   }
 ];
 
+
+/**
+ * * ==========================================
+ * * PROJECTS LIST
+ * * ==========================================
+ * ? Main dataset containing production-ready web applications, capstone projects, and bots.
+ */
 export const PROJECTS = [
   {
     title: "AquaSense",
     image: project1,
-    description:
-      "An AI-powered complaint and feedback management system for Calamba Water District that integrates a web-based platform, chatbot, sentiment analysis, and analytics dashboard to streamline customer service and enhance transparency.",
+    description: "An AI-powered complaint and feedback management system for Calamba Water District that integrates a web-based platform, chatbot, sentiment analysis, and analytics dashboard to streamline customer service and enhance transparency.",
     technologies: ["HTML", "MySQL", "PHP", "Tailwindcss", "JavaScript", "OpenAI", "Cloudflare", "Hostinger"],
     demoLink: "https://cwdaquasense.com/",
   },
   {
     title: "Prestige Game Developer Portfolio",
     image: project2,
-    description:
-      "A professionally designed and developed portfolio website for an independent Game Developer client. I led the full design and development process, focusing on modern UI, performance optimization, and clear project presentation to effectively showcase the developer’s expertise and game projects.",
+    description: "A professionally designed and developed portfolio website for an independent Game Developer client. I led the full design and development process, focusing on modern UI, performance optimization, and clear project presentation to effectively showcase the developer’s expertise and game projects.",
     technologies: ["TypeScript", "Tailwindcss", "JavaScript", "Next.js", "Vercel"],
     demoLink: "https://prestige-portfolio.vercel.app/",
   },
   {
     title: "Calamba Water District",
     image: project3,
-    description:
-      "A responsive rework of the Calamba Water District website and introduces a structured, searchable Directory listing departments, extension numbers, and personnel for faster public access and transparency.",
+    description: "A responsive rework of the Calamba Water District website and introduces a structured, searchable Directory listing departments, extension numbers, and personnel for faster public access and transparency.",
     technologies: ["HTML", "MySQL", "PHP", "Tailwindcss", "JavaScript"],
   },
   {
     title: "EHS Self-Paced Learning System",
     image: project4,
-    description:
-      "The EHS Self-Paced Learning System is a desktop-based application designed to support the Environmental Health and Safety (EHS) program by providing a structured platform for client training and assessment. The system allows administrators to create and manage learning materials, monitor participant progress, and gather feedback through interactive surveys.",
+    description: "The EHS Self-Paced Learning System is a desktop-based application designed to support the Environmental Health and Safety (EHS) program by providing a structured platform for client training and assessment. The system allows administrators to create and manage learning materials, monitor participant progress, and gather feedback through interactive surveys.",
     technologies: ["HTML", "MySQL", "PHP", "Tailwindcss", "JavaScript"],
   },
   {
     title: "りんな API PROJECT 2.0",
     image: project5,
-    description:
-      "This project utilizes an internal Rinna API provided by our school, designed to offer AI-powered text processing capabilities such as automatic tagging, summarization, and contextual analysis. Our goal was to create a simple and functional web-based tool that allows users to input raw text and receive intelligent feedback using the API.",
+    description: "This project utilizes an internal Rinna API provided by our school, designed to offer AI-powered text processing capabilities such as automatic tagging, summarization, and contextual analysis. Our goal was to create a simple and functional web-based tool that allows users to input raw text and receive intelligent feedback using the API.",
     technologies: ["HTML", "CSS", "Python", "Rinna API"],
   },
   {
     title: "Protocol Omega Discord Bot",
     image: project6,
-    description:
-      "A custom Discord bot developed for the Protocol Omega server that monitors active members in real time, displaying the number of users who are currently online and active within the community.",
+    description: "A custom Discord bot developed for the Protocol Omega server that monitors active members in real time, displaying the number of users who are currently online and active within the community.",
     technologies: ["JavaScript", "NodeJS", "Npm"],
   },
 ];
 
 
+/**
+ * * ==========================================
+ * * CONTACT INFORMATION
+ * * ==========================================
+ * ! Alert: Keep email and phone values active to ensure no missing inbound project leads.
+ */
 export const CONTACT = {
   address: "Calamba City, Laguna, PH 4027",
   phoneNo: "+63 995 635 5795",
