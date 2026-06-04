@@ -194,12 +194,14 @@ export const PROJECTS = [
     image: project3,
     description: "A responsive rework of the Calamba Water District website and introduces a structured, searchable Directory listing departments, extension numbers, and personnel for faster public access and transparency.",
     technologies: ["HTML", "MySQL", "PHP", "Tailwindcss", "JavaScript"],
+    demoLink: "https://cwd-i0xv.onrender.com/",
   },
   {
     title: "EHS Self-Paced Learning System",
     image: project4,
     description: "The EHS Self-Paced Learning System is a desktop-based application designed to support the Environmental Health and Safety (EHS) program by providing a structured platform for client training and assessment. The system allows administrators to create and manage learning materials, monitor participant progress, and gather feedback through interactive surveys.",
     technologies: ["HTML", "MySQL", "PHP", "Tailwindcss", "JavaScript"],
+    demoLink: "https://letran-calamba-fmgsd.onrender.com/",
   },
   {
     title: "りんな API PROJECT 2.0",

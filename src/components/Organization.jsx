@@ -175,7 +175,7 @@ const Organization = () => {
                   whileInView="visible"
                   viewport={{ once: false, amount: 0.3 }}
                   className="relative rounded-xl overflow-hidden group cursor-default"
-                  style={{ height: "130px", border: "1px solid rgba(255,255,255,0.07)" }}
+                  style={{ height: "130px", border: `1px solid rgba(${hexToRgb(member.color)}, 0.45)`,boxShadow: `0 0 12px rgba(${hexToRgb(member.color)}, 0.12)`,}}
                 >
                   {/* ==================== BANNER SUPPORT (Video + GIF + Image) ==================== */}
                   <div className="absolute inset-0 overflow-hidden">
@@ -215,7 +215,12 @@ const Organization = () => {
 
                   <div className="relative z-10 h-full flex items-center gap-4 px-6">
                     {/* Profile Image */}
-                    <div className="flex-shrink-0 w-12 h-12 rounded-2xl overflow-hidden ring-2 ring-white/20 ring-offset-2 ring-offset-[#0a0a0a]">
+                    <div
+                      className="flex-shrink-0 w-12 h-12 rounded-2xl overflow-hidden ring-offset-2 ring-offset-[#0a0a0a]"
+                      style={{
+                        boxShadow: `0 0 0 2px ${member.color}`,
+                      }}
+                    >
                       <img
                         src={member.avatar}
                         alt={member.name}
