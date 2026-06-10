@@ -5,6 +5,7 @@ import project3 from "../assets/projects/project-3.png";
 import project4 from "../assets/projects/project-4.png";
 import project5 from "../assets/projects/project-5.png";
 import project6 from "../assets/projects/project-6.png";
+import project7 from "../assets/projects/project-7.png";
 
 /**
  * * ==========================================
@@ -204,14 +205,21 @@ export const PROJECTS = [
     demoLink: "https://letran-calamba-fmgsd.onrender.com/",
   },
   {
-    title: "りんな API PROJECT 2.0",
+    title: "Billionaire Gang Official Website",
     image: project5,
+    description: "A premium entertainment and creator-brand platform developed for Billionaire Gang, one of the Philippines’ largest digital creator communities. The website serves as a centralized hub featuring dynamic content showcases, creator profiles, social media integrations, music streaming, real-time channel statistics, and an immersive luxury-inspired user experience. Built with a focus on performance, scalability, and modern design, the platform strengthens the Billionaire Gang brand while providing fans with seamless access to its content ecosystem.",
+    technologies: ["Next.js", "TypeScript", "Tailwindcss", "Vercel"],
+    demoLink: "https://billionaire-gang.vercel.app",
+  },
+  {
+    title: "りんな API PROJECT 2.0",
+    image: project6,
     description: "This project utilizes an internal Rinna API provided by our school, designed to offer AI-powered text processing capabilities such as automatic tagging, summarization, and contextual analysis. Our goal was to create a simple and functional web-based tool that allows users to input raw text and receive intelligent feedback using the API.",
     technologies: ["HTML", "CSS", "Python", "Rinna API"],
   },
   {
     title: "Protocol Omega Discord Bot",
-    image: project6,
+    image: project7,
     description: "A custom Discord bot developed for the Protocol Omega server that monitors active members in real time, displaying the number of users who are currently online and active within the community.",
     technologies: ["JavaScript", "NodeJS", "Npm"],
   },
