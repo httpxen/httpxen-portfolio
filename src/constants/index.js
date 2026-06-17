@@ -163,7 +163,7 @@ export const GALLERY_ITEMS = [
     company: "Calamba Water District",
     category: "Capstone",
     description: "Successfully deploying the developed system to the client's production environment and providing comprehensive documentation and training to ensure smooth handover and client autonomy in system management.",
-    src: "capstone-3.jpg",
+    src: "capstone-3.png",
     year: "2025 to 2026"
   }
 ];
