@@ -27,7 +27,7 @@ dist-ssr/
 *.sln
 *.sw?
 
-# Windows system files (Napansin ko 'to sa assets list mo)
+# Windows system files
 desktop.ini
 Thumbs.db
 
@@ -39,5 +39,4 @@ Thumbs.db
 .env.production.local
 
 # Public assets
-public
 Opulencia_CV.pdf
