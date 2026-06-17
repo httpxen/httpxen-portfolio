@@ -127,6 +127,13 @@ export default function LuxuryGallery() {
           </nav>
         </header>
 
+        {/*
+          NOTE: pinanatili ang "columns" (masonry) layout para hindi magbago ang pagkakasunod-sunod
+          ng mga item (masonry fills column-by-column, top to bottom, hindi row by row gaya ng grid).
+          Ang misalignment dati ay galing sa title na nagwrap sa 2 lines sa ibang card kaysa sa iba,
+          kaya nadagdagan namin ng fixed min-height ang title sa GalleryCard (see below) — pareho na
+          ang height ng bawat card kaya hindi na na-shift ang pagkakahanay ng mga sumusunod na row.
+        */}
         <motion.div
           layout
           className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8"
@@ -245,7 +252,7 @@ function GalleryCard({ item, onClick }) {
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       onClick={onClick}
-      className="break-inside-avoid group cursor-pointer relative"
+      className="break-inside-avoid group cursor-pointer relative flex flex-col"
     >
       <div className="relative overflow-hidden bg-zinc-900 aspect-[4/5]">
         <motion.div
@@ -275,7 +282,7 @@ function GalleryCard({ item, onClick }) {
 
       <div className="mt-6 flex justify-between items-start border-t border-zinc-900 pt-4 group-hover:border-purple-500/50 transition-colors duration-300">
         <div>
-          <h3 className="text-lg font-medium tracking-tight uppercase group-hover:text-purple-400 transition-colors text-white">
+          <h3 className="text-lg font-medium tracking-tight uppercase group-hover:text-purple-400 transition-colors text-white line-clamp-2 h-[3.5rem]">
             {item.title}
           </h3>
           <p className="text-[10px] text-zinc-600 font-mono mt-1 uppercase tracking-widest">
