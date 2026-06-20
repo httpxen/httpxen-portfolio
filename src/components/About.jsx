@@ -92,7 +92,7 @@ const About = () => {
               whileHover={{ scale: 1.05 }}
               className="p-4 rounded-lg bg-gradient-to-br from-green-500/20 to-green-400/10 backdrop-blur-md border border-green-500/30 shadow-md text-center"
             >
-              <h3 className="text-xl font-bold text-green-400">5</h3>
+              <h3 className="text-xl font-bold text-green-400">7</h3>
               <p className="text-xs text-neutral-400">Projects</p>
             </motion.div>
 
