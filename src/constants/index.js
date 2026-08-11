@@ -1,4 +1,3 @@
-import { desc } from "framer-motion/client";
 import project1 from "../assets/projects/project-1.png";
 import project2 from "../assets/projects/project-2.png";
 import project3 from "../assets/projects/project-3.png";
@@ -100,7 +99,7 @@ export const CODESMITH_MEMBERS = [
  * * ==========================================
  */
 // ? Core technical skills rendered as showcase badges.
-export const TECH_TAGS = ["FIVEM", ,"ESX" ,"LUA" ,"CUSTOM SCRIPTS", "SERVER OPTIMIZATION", "UI & UX",];
+export const TECH_TAGS = ["FIVEM", "ESX", "LUA", "CUSTOM SCRIPTS", "SERVER OPTIMIZATION", "UI & UX"];
 
 // ? Used for active category tab switching inside the gallery component.
 export const GALLERY_CATEGORIES = ["All", "OJT", "Capstone"];
@@ -179,48 +178,48 @@ export const GALLERY_ITEMS = [
 export const PROJECTS = [
   {
     title: "AquaSense",
-    image: project1,
+    image: project1.src,
     description: "An AI-powered complaint and feedback management system for Calamba Water District that integrates a web-based platform, chatbot, sentiment analysis, and analytics dashboard to streamline customer service and enhance transparency.",
     technologies: ["HTML", "MySQL", "PHP", "Tailwindcss", "JavaScript", "OpenAI", "Cloudflare", "Hostinger"],
     demoLink: "https://cwdaquasense.com/",
   },
   {
     title: "Prestige Game Developer Portfolio",
-    image: project2,
+    image: project2.src,
     description: "A professionally designed and developed portfolio website for an independent Game Developer client. I led the full design and development process, focusing on modern UI, performance optimization, and clear project presentation to effectively showcase the developer’s expertise and game projects.",
     technologies: ["TypeScript", "Tailwindcss", "JavaScript", "Next.js", "Vercel"],
     demoLink: "https://prestige-portfolio.vercel.app/",
   },
   {
     title: "Calamba Water District",
-    image: project3,
+    image: project3.src,
     description: "A responsive rework of the Calamba Water District website and introduces a structured, searchable Directory listing departments, extension numbers, and personnel for faster public access and transparency.",
     technologies: ["HTML", "MySQL", "PHP", "Tailwindcss", "JavaScript"],
     demoLink: "https://cwd-i0xv.onrender.com/",
   },
   {
     title: "EHS Self-Paced Learning System",
-    image: project4,
+    image: project4.src,
     description: "The EHS Self-Paced Learning System is a desktop-based application designed to support the Environmental Health and Safety (EHS) program by providing a structured platform for client training and assessment. The system allows administrators to create and manage learning materials, monitor participant progress, and gather feedback through interactive surveys.",
     technologies: ["HTML", "MySQL", "PHP", "Tailwindcss", "JavaScript"],
     demoLink: "https://letran-calamba-fmgsd.onrender.com/",
   },
   {
     title: "Billionaire Gang Official Website",
-    image: project5,
+    image: project5.src,
     description: "A premium entertainment and creator-brand platform developed for Billionaire Gang, one of the Philippines’ largest digital creator communities. The website serves as a centralized hub featuring dynamic content showcases, creator profiles, social media integrations, music streaming, real-time channel statistics, and an immersive luxury-inspired user experience. Built with a focus on performance, scalability, and modern design, the platform strengthens the Billionaire Gang brand while providing fans with seamless access to its content ecosystem.",
     technologies: ["Next.js", "TypeScript", "Tailwindcss", "Vercel"],
     demoLink: "https://billionaire-gang.vercel.app",
   },
   {
     title: "りんな API PROJECT 2.0",
-    image: project6,
+    image: project6.src,
     description: "This project utilizes an internal Rinna API provided by our school, designed to offer AI-powered text processing capabilities such as automatic tagging, summarization, and contextual analysis. Our goal was to create a simple and functional web-based tool that allows users to input raw text and receive intelligent feedback using the API.",
     technologies: ["HTML", "CSS", "Python", "Rinna API"],
   },
   {
     title: "Protocol Omega Discord Bot",
-    image: project7,
+    image: project7.src,
     description: "A custom Discord bot developed for the Protocol Omega server that monitors active members in real time, displaying the number of users who are currently online and active within the community.",
     technologies: ["JavaScript", "NodeJS", "Npm"],
   },

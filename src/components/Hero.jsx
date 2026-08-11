@@ -94,14 +94,6 @@ const Hero = () => {
       formRef.current.reset();
     } catch (error) {
       console.error('Email send error details:', error);
-      let errorMsg = 'Something went wrong. Please try again.';
-      if (error.status === 400 || error.status === 422) {
-        errorMsg = 'Template setup issue (e.g., To Email field). Check EmailJS dashboard.';
-      } else if (error.status === 401) {
-        errorMsg = 'Invalid public key or auth issue.';
-      } else if (error.status === 429) {
-        errorMsg = 'Rate limit hit. Try again in a second.';
-      }
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -185,7 +177,7 @@ const Hero = () => {
                 initial={{ y: 100, opacity: 0 }}
                 animate={imageInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
-                src={profilePic}
+                src={profilePic.src}
                 alt="Andrei Opulencia profile picture"
                 className="relative w-full h-auto rounded-lg object-cover filter brightness-75 shadow-md"
               />
@@ -247,7 +239,7 @@ const Hero = () => {
             
             {submitStatus === 'success' && (
               <div className="mb-4 p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-green-400 text-center text-sm font-medium">
-                Thank you! Your message has been sent. I'll reply soon.
+                Thank you! Your message has been sent. I&apos;ll reply soon.
               </div>
             )}
             

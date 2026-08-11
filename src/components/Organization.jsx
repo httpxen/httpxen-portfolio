@@ -65,7 +65,7 @@ const Organization = () => {
               {/* Logo */}
               <div className="flex-shrink-0 w-[72px] h-[72px] rounded-xl overflow-hidden">
                 <img
-                  src={logo}
+                  src={logo.src}
                   alt="CodeSmith Logo"
                   className="w-full h-full object-cover"
                 />
