@@ -40,7 +40,7 @@ const About = () => {
             {/* ---------------------------- */}
 
             <img
-              src={aboutImg}
+              src={aboutImg.src}
               alt="Andrei Opulencia"
               className="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 brightness-90"
             />
