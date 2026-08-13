@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "../components/About";
+import Education from "../components/Education";
 import Technologies from "../components/Technologies";
 import Experience from "../components/Experience";
 import Gallery from "../components/Gallery";
@@ -51,6 +52,7 @@ const Page = () => {
           <Navbar />
           <Hero />
           <About />
+          <Education />
           <Technologies />
           <Experience />
           <Gallery />
