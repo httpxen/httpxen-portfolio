@@ -55,7 +55,8 @@ export const EXPERIENCES = [
  * * TEAM & COMMUNITY MEMBERS
  * * ==========================================
  * ? List of core developers and community contributors.
- 
+ */
+
 export const CODESMITH_MEMBERS = [
   {
     name: "XEN",
@@ -90,7 +91,7 @@ export const CODESMITH_MEMBERS = [
     avatar: "https://i.pinimg.com/736x/70/81/76/708176298d3b8281e3f3325481e3cde9.jpg"
   },
 ];
-*/
+
 
 
 /**

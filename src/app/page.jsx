@@ -9,7 +9,7 @@ import Technologies from "../components/Technologies";
 import Experience from "../components/Experience";
 import Gallery from "../components/Gallery";
 import Projects from "../components/Projects";
-//import Organization from "../components/Organization";
+import Organization from "../components/Organization";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Preloader from "../components/Preloader";
@@ -57,6 +57,7 @@ const Page = () => {
           <Experience />
           <Gallery />
           <Projects />
+          <Organization />
           <Contact />
           <Footer />
           <ScrollToTop />
